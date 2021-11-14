@@ -2,7 +2,8 @@ from config import *
 import tweepy
 import datetime
 import csv
-print("hi")
+
+
 auth = tweepy.OAuthHandler("key", "secret")
 auth.set_access_token("key", "secret")
 api = tweepy.API(auth, wait_on_rate_limit=True)
