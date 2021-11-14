@@ -13,7 +13,7 @@ tweets_list = tweepy.Cursor(api.search_tweets, q="girlsintech", lang="en", since
 output = []
 csv_file = open("csv_filetechwomen.csv", "w")
 writer = csv.writer(csv_file)
-print("tweet list len")
+
 for tweet in tweets_list:
      if tweet.user.verified:
         continue
@@ -22,14 +22,13 @@ for tweet in tweets_list:
     if tweet.retweet_count < 5:
         continue
     if len(text1) > 2 and text1[:2] == "RT":
-        print("smh")
         continue
 
     print(text1)
     line = {'text': text1}
     output.append(line)
     writer.writerow([text1, id1])
-print("after later")
+
 import pandas as pd
 df = pd.DataFrame(output)
 df.to_csv('output.csv')
